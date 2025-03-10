@@ -1,0 +1,9 @@
+# Ignore python env files and directories
+*.cfg
+/lib
+/lib64
+/include
+/bin
+
+# Ignore the file provided (link to download in readme)
+veridion_product_deduplication_challenge.snappy.parquet
