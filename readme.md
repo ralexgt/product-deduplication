@@ -10,7 +10,7 @@ resulting in duplicate entries where the same product appears across different
 sources. Each row represents partial attributes of a product.
 
 ## Resources
-[product deduplication - Download](https://drive.google.com/file/d/1FdRoEVmWGQjTX7bLTtnQviu4NwxXna_q/view)
+- [dataset - Download](https://drive.google.com/file/d/1FdRoEVmWGQjTX7bLTtnQviu4NwxXna_q/view)
 
 ---
 
@@ -21,4 +21,4 @@ TBA
 TBA
 
 ## Code and Logic
-
+TBA

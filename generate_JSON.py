@@ -5,7 +5,7 @@ try:
     df = pd.read_parquet("veridion_product_deduplication_challenge.snappy.parquet", engine="pyarrow")
 
     # save it as a JSON file for readability
-    df.to_json("output.json", orient="records", indent=4)
+    df.to_json("input.json", orient="records", indent=4)
  
     print("File successfully written!")
 except Exception as e:

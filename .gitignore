@@ -7,3 +7,5 @@
 
 # Ignore the file provided (link to download in readme)
 veridion_product_deduplication_challenge.snappy.parquet
+output.json
+input.json

@@ -1,0 +1,78 @@
+1. Parquet file documentation
+2. Parse the parquet file to JSON for readability (personal preference, firt idea that came to mind for a readable format) (check generate_JSON.py)
+3. Examining the dataset
+	* Products
+		- unspsc: string (not null)
+		- root_domain: string (not null)
+		- page_url: string (not null)
+		- product_title: string (not null | identifier/key MAYBE together with root_domain | MAYBE UNIQUE)
+		- product_summary: string (not null)
+		- product_name: string (not null | maybe could be used for identifier)
+		- product_identifier: list of strings (nullable)
+		- brand: null | string
+		- intended_industries: list of strings (nullable)
+		- applicability: list of strings (nullable)
+		- eco_friendly: null | boolean
+		- ethical_and_sustainability_practices: list of strings (nullable)
+		- production_capacity: null | list of objects
+			- "quantity": int (ex. 60000)
+			- "time_frame": string (ex. "Month")
+			- "type": string (ex. "exact")
+			- "unit": string (ex. "Units")
+		- price: null | list of objects
+			- "amount": double (ex. 7.0)
+			- "currency": string (ex. "EUR")
+			- "type": string (ex. "exact")
+		- materials: list of strings (nullable)
+		- ingredients: list of strings (nullable)
+		- manufacturing_countries: list of strings (nullable)
+		- manufacturing_year: -1 | (maybe int / didnt find one in given data)
+		- manufacturing_type: list of strings (nullable)
+		- customization: list of strings (nullable)
+		- packaging_type: list of strings (nullable)
+		- form: null | list of strings (nullable)
+		- size: null | list of objects
+			- "dimension": string | null (ex. "Diameter")
+			- "qualitative": boolean | null
+			- "type": string | maybe null?
+			- "unit": string | maybe null?
+			- "value": string | maybe null?
+		- color: null | list of objects
+			- "original": string (ex. "Black")
+			- "simple": string (ex. "Black")
+		- purity: nulll | list of objects
+			- "qualitative": boolean
+			- "type": string (ex. "exact")
+			- "unit": null | string maybe?
+			- "value": string (ex. "high")
+		- energy_efficiency: null | list of objects
+			- "exact_percentage": null | double
+			- "max_percentage": null | double
+			- "min_percentage": null | double
+			- "qualitative": string | null maybe
+		- pressure_rating: null | list of objects
+			- "qualitative": boolean | maybe null?
+			- "type": string (ex. "exact")
+			- "unit": null | string (ex. "psi")
+			- "value": null | string (ex. "40.0")
+		- power_rating: null | list of objects
+			- "qualitative": boolean | maybe null?
+			- "type": string (ex. "exact")
+			- "unit": null | string (ex. "W")
+			- "value": null | string (ex. "40.0")
+		- quality_standards_and_certifications: list of strings (nullable)
+		- miscellaneous_features: list of strings (nullable)
+		- description: string | null
+
+4. Initial Assumptions:
+- product_title is UNIQUE
+- types are those from 3.
+
+5. Ideas:
+- Brute force-ish:
+	- make an class / struct with the fields on 3.
+	- parse each entry in the json file.
+	- if the product_title was not seen before, add it in a map<string, PRODUCT> 
+	- if the product_title was seen before, check the fields to see if there is anythingg new to be added (careful for objects in objects)
+	- the map should have the dataset with the consolidated entries
+	- output the new dataset
